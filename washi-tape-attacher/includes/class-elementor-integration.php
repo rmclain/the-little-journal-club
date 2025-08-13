@@ -10,6 +10,8 @@ if (!defined('ABSPATH')) {
 
 /**
  * Handles the integration with Elementor.
+ * NOTE: This plugin is now DISABLED as the Washi Tape Generator will now be the single source of truth for all washi tape controls.
+ * This file is kept for backward compatibility but no longer adds controls.
  */
 class Elementor_Integration {
 
@@ -24,18 +26,15 @@ class Elementor_Integration {
     }
 
     public function __construct() {
-        // Register the controls for various element types
-        add_action('elementor/element/common/_section_style/after_section_end', [$this, 'register_controls'], 10, 1);
-        add_action('elementor/element/section/section_advanced/after_section_end', [$this, 'register_controls'], 10, 1);
-        add_action('elementor/element/column/section_advanced/after_section_end', [$this, 'register_controls'], 10, 1);
-        add_action('elementor/element/container/section_layout/after_section_end', [$this, 'register_controls'], 10, 1);
-
-        // Render the tape on the frontend
-        add_action('elementor/frontend/before_render', [$this, 'before_render'], 10, 1);
-        add_action('elementor/frontend/after_render', [$this, 'after_render'], 10, 1);
+        // DISABLED: No longer registering controls to prevent conflicts
+        // The Washi Tape Generator now provides unified controls for all washi tape functionality
+        
+        // Only keep the render functionality for existing content
+        \add_action('elementor/frontend/before_render', [$this, 'before_render'], 10, 1);
+        \add_action('elementor/frontend/after_render', [$this, 'after_render'], 10, 1);
 
         // Enqueue assets
-        add_action('elementor/frontend/after_enqueue_styles', [$this, 'enqueue_frontend_styles']);
+        \add_action('elementor/frontend/after_enqueue_styles', [$this, 'enqueue_frontend_styles']);
     }
 
     /**
@@ -49,159 +48,22 @@ class Elementor_Integration {
                 $tapes = $db->get_all_washi_tapes();
                 if (!empty($tapes)) {
                     foreach ($tapes as $tape) {
-                        self::$washi_tapes_cache[$tape->id] = esc_html($tape->title);
+                        self::$washi_tapes_cache[$tape->id] = \esc_html($tape->title);
                     }
                 }
             }
         }
-        return ['0' => __('— Select Tape —', 'washi-tape-attacher')] + self::$washi_tapes_cache;
+        return ['0' => \__('— Select Tape —', 'washi-tape-attacher')] + self::$washi_tapes_cache;
     }
 
     /**
      * Register the controls in the Elementor panel.
+     * DISABLED: This method no longer adds controls to prevent conflicts.
      */
     public function register_controls(Element_Base $element) {
-        $element->start_controls_section(
-            'section_washi_tape_attacher',
-            [
-                'label' => __('Washi Tape', 'washi-tape-attacher'),
-                'tab' => Controls_Manager::TAB_ADVANCED,
-            ]
-        );
-
-        $element->add_control(
-            'wta_enable',
-            [
-                'label' => __('Enable Washi Tape', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SWITCHER,
-                'return_value' => 'yes',
-                'render_type' => 'template', // This is crucial for live preview
-            ]
-        );
-
-        $element->add_control(
-            'wta_tape_id',
-            [
-                'label' => __('Select Washi Tape', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SELECT,
-                'options' => $this->get_washi_tapes(),
-                'default' => '0',
-                'condition' => ['wta_enable' => 'yes'],
-                'render_type' => 'template',
-            ]
-        );
-
-        $element->add_control(
-            'wta_position',
-            [
-                'label' => __('Tape Position', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'top-center',
-                'options' => [
-                    'top-center' => __('Top Center', 'washi-tape-attacher'),
-                    'top-left' => __('Top Left', 'washi-tape-attacher'),
-                    'top-right' => __('Top Right', 'washi-tape-attacher'),
-                ],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-            ]
-        );
-
-        $element->add_responsive_control(
-            'wta_width',
-            [
-                'label' => __('Tape Width', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%', 'vw'],
-                'range' => ['px' => ['min' => 20, 'max' => 500]],
-                'default' => ['unit' => 'px', 'size' => 120],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        
-        $element->add_responsive_control(
-            'wta_height',
-            [
-                'label' => __('Tape Height', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => ['px' => ['min' => 10, 'max' => 200]],
-                'default' => ['unit' => 'px', 'size' => 45],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $element->add_responsive_control(
-            'wta_horizontal_offset',
-            [
-                'label' => __('Horizontal Offset', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => ['px' => ['min' => -200, 'max' => 200], '%' => ['min' => -100, 'max' => 100]],
-                'default' => ['unit' => 'px', 'size' => 0],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'margin-left: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $element->add_responsive_control(
-            'wta_vertical_offset',
-            [
-                'label' => __('Vertical Offset', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => ['px' => ['min' => -200, 'max' => 200], '%' => ['min' => -100, 'max' => 100]],
-                'default' => ['unit' => 'px', 'size' => -20],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'margin-top: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $element->add_control(
-            'wta_rotation',
-            [
-                'label' => __('Tape Rotation', 'washi-tape-attacher'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['deg'],
-                'range' => ['deg' => ['min' => -180, 'max' => 180]],
-                'default' => ['unit' => 'deg', 'size' => -5],
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'transform: {{wta-position.value === \'top-center\' ? \'translateX(-50%)\' : \'\'}} rotate({{SIZE}}deg);',
-                ],
-            ]
-        );
-
-        $element->add_control(
-            'wta_z_index',
-            [
-                'label' => __('Z-Index', 'washi-tape-attacher'),
-                'type' => Controls_Manager::NUMBER,
-                'default' => 10,
-                'condition' => ['wta_enable' => 'yes', 'wta_tape_id!' => '0'],
-                'render_type' => 'template',
-                 'selectors' => [
-                    '{{WRAPPER}} .wta-tape-instance' => 'z-index: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $element->end_controls_section();
+        // DISABLED: Controls are now provided by Washi Tape Generator
+        // This prevents duplicate controls and conflicts
+        return;
     }
 
     /**
@@ -234,10 +96,10 @@ class Elementor_Integration {
                 return;
             }
             
-            $position_class = 'wta-pos-' . esc_attr($settings['wta_position']);
+            $position_class = 'wta-pos-' . \esc_attr($settings['wta_position']);
 
             // Output the tape div. The CSS selectors will handle positioning.
-            printf(
+            \printf(
                 '<div class="wta-tape-instance %s">%s</div>',
                 $position_class,
                 $svg_content
@@ -249,7 +111,7 @@ class Elementor_Integration {
      * Enqueue frontend styles.
      */
     public function enqueue_frontend_styles() {
-        wp_enqueue_style(
+        \wp_enqueue_style(
             'washi-tape-attacher-frontend',
             WASHI_TAPE_ATTACHER_URL . 'assets/css/frontend.css',
             [],
