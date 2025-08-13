@@ -232,7 +232,6 @@ class Washi_Tape_Controls
 
             // Mark controls as added for this element
             self::$controls_added[$element_id] = true;
-
         } catch (\Exception $e) {
             if (WP_DEBUG) {
                 error_log('Washi Tape Generator Error: ' . $e->getMessage());
