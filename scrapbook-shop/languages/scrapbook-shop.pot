@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapbook Shop for Elementor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/scrapbook-shop\n"
+"POT-Creation-Date: 2025-08-10 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Initial template (run wp i18n make-pot to update)\n"
+"X-Domain: scrapbook-shop\n"
+
+#. translators: %s: comma-separated list of missing plugin names
+#: scrapbook-shop.php
+msgid "Scrapbook Shop requires the following plugins to be installed and activated: %s"
+msgstr ""
+
+#: scrapbook-shop.php
+msgid "Scrapbook Shop"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Scrapbook Product Card"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Scrapbook Products Grid"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Content"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Product"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "None (Use in Loop)"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Washi Tape"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Use Washi Tape"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Washi Tape Source"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Washi Tape Plugin"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Custom Image"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Random from Plugin"
+msgstr ""
+
+#: widgets/scrapbook-product-card.php
+msgid "Tape Rotation"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Query"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "All Products"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Featured Products"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "On Sale"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Best Selling"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Top Rated"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "By Category"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Manual Selection"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Layout"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Show Page Title"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Shop"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Show Sorting Dropdown"
+msgstr ""
+
+#: widgets/scrapbook-products-grid.php
+msgid "Show Result Count"
+msgstr ""
+
+#
+# This is a starter POT. To regenerate with all strings:
+# 1) Install WP-CLI and from the plugin root run:
+#    wp i18n make-pot . languages/scrapbook-shop.pot --slug=scrapbook-shop
+#

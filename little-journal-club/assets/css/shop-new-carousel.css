@@ -1,0 +1,67 @@
+/* Outer container styling */
+.shop-new-carousel-container {
+    width: 100%;
+    overflow: visible;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Swiper container */
+  .shop-new-carousel {
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+  }
+  
+  /* Each slide */
+  .shop-new-carousel .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Wrapper that gets scaled */
+  .shop-new-item__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Image container with optional mask */
+  .shop-new-item__image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Product image styling */
+  .shop-new-item__image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  /* Information styling */
+  .shop-new-item__info {
+    margin-top: 10px;
+  }
+  .shop-new-item__title {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  .shop-new-item__price {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Navigation buttons (optional) */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #000;
+  }
+  

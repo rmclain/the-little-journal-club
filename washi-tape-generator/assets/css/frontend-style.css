@@ -1,0 +1,66 @@
+/**
+ * Washi Tape Generator Frontend Styles
+ */
+
+/* Container for all washi tapes (hidden) */
+#elementor-washi-tapes {
+    display: none;
+}
+
+/* Element with washi tape - support both Elementor and non-Elementor classes */
+.has-washi-tape,
+.tljc-washi-tape-element {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Washi tape positioning and styling - support both Elementor and non-Elementor classes */
+.elementor-washi-tape,
+.tljc-washi-tape-element {
+    position: absolute;
+    z-index: 2;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+    pointer-events: none;
+}
+
+/* Position helpers - support both Elementor and non-Elementor classes */
+.has-washi-tape[data-washi-tape-position="top-left"] .elementor-washi-tape,
+.tljc-washi-tape-element[data-washi-tape-position="top-left"] {
+    top: -20px;
+    left: -20px;
+}
+
+.has-washi-tape[data-washi-tape-position="top-right"] .elementor-washi-tape,
+.tljc-washi-tape-element[data-washi-tape-position="top-right"] {
+    top: -20px;
+    right: -20px;
+}
+
+.has-washi-tape[data-washi-tape-position="bottom-left"] .elementor-washi-tape,
+.tljc-washi-tape-element[data-washi-tape-position="bottom-left"] {
+    bottom: -20px;
+    left: -20px;
+}
+
+.has-washi-tape[data-washi-tape-position="bottom-right"] .elementor-washi-tape,
+.tljc-washi-tape-element[data-washi-tape-position="bottom-right"] {
+    bottom: -20px;
+    right: -20px;
+}
+
+/* Make sure SVG fills the container */
+.elementor-washi-tape svg,
+.tljc-washi-tape-element svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Fix SVG attributes */
+.washi-svg {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: -20px;
+    transform: translateX(-50%) rotate(0deg);
+}

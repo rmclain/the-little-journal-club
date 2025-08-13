@@ -1,0 +1,317 @@
+/* ===============================
+   1. Washi Tape Div Widget Styles 
+   =============================== */
+.widget-washi-tape-container {
+  position: relative;
+  margin: 35px auto;
+  padding: 0;
+  box-sizing: border-box;
+  padding-top: 49px;
+}
+
+.widget-washi-tape-content {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  top: -49px;
+}
+
+.widget-washi-tape-title {
+  margin: 0 0 15px 0;
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.widget-washi-tape-content-text {
+  margin: 0;
+  flex: 1;
+}
+
+/* Widget Tape Base Styles */
+.widget-tape {
+  position: absolute;
+  width: 195px;
+  height: 52px;
+  z-index: 1;
+  opacity: 0.8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Widget Tape Positioning */
+.widget-tape-left {
+  left: -50px;
+  top: calc(-26px + 50px);
+  transform: rotate(-33deg);
+  transform-origin: 0 50%;
+}
+
+.widget-tape-right {
+  right: -50px;
+  top: calc(-26px + 50px);
+  transform: rotate(33deg);
+  transform-origin: 100% 50%;
+}
+
+.widget-tape-center {
+  left: 50%;
+  top: calc(-26px + 50px);
+  transform: translateX(-50%);
+}
+
+/* Widget-specific responsive styles */
+@media (max-width: 767px) {
+  .widget-tape {
+    height: 25px;
+  }
+
+  .widget-tape-left,
+  .widget-tape-right {
+    width: 70px;
+  }
+
+  .widget-washi-tape-title {
+    font-size: 1.3em;
+  }
+}
+
+/* ===============================
+   2. Elementor Washi Tape Styles 
+   =============================== */
+[class*="elementor-washi-"] {
+  position: relative;
+}
+
+[class*="elementor-washi-"]::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 30px;
+  top: -15px;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+/* Elementor Washi Positions */
+.elementor-washi-left::before {
+  left: 20px;
+  transform: rotate(-35deg);
+}
+
+.elementor-washi-right::before {
+  right: 20px;
+  transform: rotate(35deg);
+}
+
+.elementor-washi-center::before {
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+}
+
+/* Shared Tape Style Patterns */
+.tape-pattern-pink,
+.elementor-washi-pink::before {
+  background-color: rgba(255, 182, 193, 0.8);
+}
+
+.tape-pattern-mint,
+.elementor-washi-mint::before {
+  background-color: rgba(152, 255, 178, 0.8);
+}
+
+/* Tape styles */
+.ljc-tape-lavender {
+  background-color: rgba(230, 190, 255, 0.8);
+}
+
+.ljc-tape-striped {
+  background: repeating-linear-gradient(45deg,
+      rgba(255, 192, 203, 0.8),
+      rgba(255, 192, 203, 0.8) 10px,
+      rgba(255, 218, 224, 0.8) 10px,
+      rgba(255, 218, 224, 0.8) 20px);
+}
+
+.ljc-tape-polkadot {
+  background-color: rgba(255, 223, 186, 0.8);
+  background-image: radial-gradient(circle at 3px 3px,
+      rgba(255, 155, 55, 0.5) 2px,
+      transparent 0);
+  background-size: 15px 15px;
+}
+
+.ljc-tape-floral {
+  background-color: rgba(255, 240, 245, 0.8);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0),
+    radial-gradient(circle at 0% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0),
+    radial-gradient(circle at 100% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.ljc-tape-grid {
+  background-color: rgba(176, 224, 230, 0.8);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+  background-size: 10px 10px;
+}
+
+.ljc-tape-rainbow {
+  background: linear-gradient(90deg,
+      rgba(255, 182, 193, 0.8),
+      rgba(255, 218, 185, 0.8),
+      rgba(255, 255, 186, 0.8),
+      rgba(176, 224, 230, 0.8),
+      rgba(230, 190, 255, 0.8));
+}
+
+.ljc-tape-bw-grid {
+  background-color: rgba(255, 255, 255, 0.9);
+  background-image:
+    linear-gradient(black 2.2px, transparent 2.2px),
+    linear-gradient(90deg, black 2.2px, transparent 2.2px);
+  background-size: 10px 10px;
+  background-position: 5px 5px;
+  /* Offset by 5px in both directions */
+}
+
+.ljc-tape-custom-image {
+  background-color: transparent;
+  background-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  /* Improves image quality on Webkit browsers */
+  image-rendering: crisp-edges;
+  /* Modern browsers */
+}
+
+/* Additional Washi Styles */
+.ljc-elementor-washi.ljc-washi-style-pastel-grid::before {
+  background-color: rgba(255, 218, 235, 0.8);
+  /* pastel pink */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.ljc-elementor-washi.ljc-washi-style-mint-dots::before {
+  background-color: rgba(183, 255, 219, 0.8);
+  /* pastel mint */
+  background-image: radial-gradient(circle at 4px 4px,
+      rgba(255, 255, 255, 0.6) 1.5px,
+      transparent 0);
+  background-size: 12px 12px;
+}
+
+.ljc-elementor-washi.ljc-washi-style-lavender-cross::before {
+  background-color: rgba(230, 208, 255, 0.8);
+  /* pastel lavender */
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.ljc-elementor-washi.ljc-washi-style-sky-dots::before {
+  background-color: rgba(191, 232, 255, 0.8);
+  /* pastel blue */
+  background-image:
+    radial-gradient(circle at 3px 3px, rgba(255, 255, 255, 0.5) 1px, transparent 0),
+    radial-gradient(circle at 9px 9px, rgba(255, 255, 255, 0.5) 1px, transparent 0);
+  background-size: 12px 12px;
+}
+
+.ljc-elementor-washi.ljc-washi-style-lemon-grid::before {
+  background-color: rgba(255, 250, 185, 0.8);
+  /* pastel yellow */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.ljc-elementor-washi.ljc-washi-style-peach-diamonds::before {
+  background-color: rgba(255, 218, 185, 0.8);
+  /* pastel peach */
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%);
+  background-size: 10px 10px;
+}
+
+/* Elementor Washi Sizes */
+.elementor-washi-small::before {
+  width: min(80px, 20vw);
+  height: 25px;
+  top: -12px;
+}
+
+.elementor-washi-medium::before {
+  width: min(120px, 25vw);
+  height: 35px;
+  top: -17px;
+}
+
+.elementor-washi-large::before {
+  width: min(160px, 30vw);
+  height: 45px;
+  top: -22px;
+}
+
+/* Washi Tape Base Styles */
+.ljc-elementor-washi-wrapper {
+    position: relative;
+}
+
+.ljc-elementor-washi::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    opacity: 0.8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Tape Sizes */
+.ljc-elementor-washi-small::before {
+    width: min(80px, 20vw);
+    height: 25px;
+    top: -12px;
+}
+
+.ljc-elementor-washi-medium::before {
+    width: min(120px, 25vw);
+    height: 35px;
+    top: -17px;
+}
+
+.ljc-elementor-washi-large::before {
+    width: min(160px, 30vw);
+    height: 45px;
+    top: -22px;
+}
+
+/* Tape Positions */
+.ljc-elementor-washi.washi-left::before {
+    left: 20px;
+    transform: rotate(-35deg);
+}
+
+.ljc-elementor-washi.washi-right::before {
+    right: 20px;
+    transform: rotate(35deg);
+}
+
+.ljc-elementor-washi.washi-center::before {
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+}
+
+/* Tape Styles */
+.ljc-elementor-washi.washi-style-pink::before {
+    background-color: rgba(255, 182, 193, 0.8);
+}
+
+/* ... (rest of the styles with ljc- prefix) ... */

@@ -1,0 +1,35 @@
+/*
+ * Washi Tape Attacher - Frontend & Editor Styles
+ */
+
+/* This makes the element a positioning container for the tape */
+.wta-element-wrapper {
+    position: relative !important;
+}
+
+/* Base styles for the tape instance */
+.wta-tape-instance {
+    position: absolute;
+    pointer-events: none; /* Prevents tape from interfering with clicks */
+    line-height: 0;
+}
+
+.wta-tape-instance svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Positioning helpers */
+.wta-pos-top-center {
+    left: 50%;
+    transform: translateX(-50%); /* Center the tape before applying offsets */
+}
+
+.wta-pos-top-left {
+    left: 0;
+}
+
+.wta-pos-top-right {
+    right: 0;
+}

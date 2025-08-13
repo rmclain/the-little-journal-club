@@ -1,0 +1,233 @@
+/**
+ * Washi Tape Div Widget - Dedicated Styles
+ * This file contains styles specifically for the Washi Tape Div Widget
+ */
+
+/* Widget Container */
+.widget-washi-tape-container {
+    position: relative;
+    margin: 35px auto;
+    padding: 0;
+    box-sizing: border-box;
+    padding-top: 49px;
+    z-index: 1;
+}
+
+/* Widget Content */
+.widget-washi-tape-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    top: -49px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Widget Title */
+.widget-washi-tape-title {
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #222222;
+}
+
+/* Widget Content Text */
+.widget-washi-tape-content-text {
+    margin: 0;
+    flex: 1;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Widget Tape Base Styles */
+.widget-tape {
+    position: absolute;
+    width: 195px;
+    height: 52px;
+    z-index: 2;
+    opacity: 0.8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* Generator SVG Integration */
+.widget-tape.tape-from-generator {
+    background: transparent !important;
+    opacity: 1;
+    overflow: visible;
+}
+
+.widget-tape.tape-from-generator svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    max-width: none;
+    max-height: none;
+}
+
+/* Widget Tape Positioning */
+.widget-tape-left {
+    left: -50px;
+    top: calc(-26px + 50px);
+    transform: rotate(-33deg);
+    transform-origin: 0 50%;
+}
+
+.widget-tape-right {
+    right: -50px;
+    top: calc(-26px + 50px);
+    transform: rotate(33deg);
+    transform-origin: 100% 50%;
+}
+
+.widget-tape-center {
+    left: 50%;
+    top: calc(-26px + 50px);
+    transform: translateX(-50%);
+}
+
+/* Widget Tape Pattern Styles */
+.tape-pattern-pink {
+    background-color: rgba(255, 182, 193, 0.8);
+}
+
+.tape-pattern-mint {
+    background-color: rgba(152, 255, 178, 0.8);
+}
+
+.tape-pattern-lavender {
+    background-color: rgba(230, 190, 255, 0.8);
+}
+
+.tape-pattern-striped {
+    background: repeating-linear-gradient(45deg,
+            rgba(255, 192, 203, 0.8),
+            rgba(255, 192, 203, 0.8) 10px,
+            rgba(255, 218, 224, 0.8) 10px,
+            rgba(255, 218, 224, 0.8) 20px);
+}
+
+.tape-pattern-polkadot {
+    background-color: rgba(255, 223, 186, 0.8);
+    background-image: radial-gradient(circle at 3px 3px,
+            rgba(255, 155, 55, 0.5) 2px,
+            transparent 0);
+    background-size: 15px 15px;
+}
+
+.tape-pattern-floral {
+    background-color: rgba(255, 240, 245, 0.8);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0),
+        radial-gradient(circle at 0% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0),
+        radial-gradient(circle at 100% 50%, rgba(255, 182, 193, 0.6) 2px, transparent 0);
+    background-size: 20px 20px;
+}
+
+.tape-pattern-grid {
+    background-color: rgba(176, 224, 230, 0.8);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+    background-size: 10px 10px;
+}
+
+.tape-pattern-bw-grid {
+    background-color: rgba(255, 255, 255, 0.9);
+    background-image:
+        linear-gradient(black 2.2px, transparent 2.2px),
+        linear-gradient(90deg, black 2.2px, transparent 2.2px);
+    background-size: 10px 10px;
+    background-position: 5px 5px;
+}
+
+.tape-pattern-rainbow {
+    background: linear-gradient(90deg,
+            rgba(255, 182, 193, 0.8),
+            rgba(255, 218, 185, 0.8),
+            rgba(255, 255, 186, 0.8),
+            rgba(176, 224, 230, 0.8),
+            rgba(230, 190, 255, 0.8));
+}
+
+.tape-pattern-custom {
+    /* Custom color will be applied via inline styles */
+}
+
+.tape-pattern-custom-image {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 50px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .widget-tape {
+        height: 25px;
+    }
+
+    .widget-tape-left,
+    .widget-tape-right {
+        width: 70px;
+    }
+
+    .widget-washi-tape-title {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .widget-tape {
+        height: 20px;
+    }
+
+    .widget-tape-left,
+    .widget-tape-right {
+        width: 60px;
+    }
+
+    .widget-washi-tape-container {
+        padding-top: 35px;
+    }
+
+    .widget-washi-tape-content {
+        top: -35px;
+    }
+}
+
+/* Browser Fallbacks */
+@supports not (top: calc(0px)) {
+    .widget-tape-left {
+        top: 24px;
+    }
+
+    .widget-tape-right {
+        top: 24px;
+    }
+
+    .widget-tape-center {
+        top: 24px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .widget-tape {
+        opacity: 0.6;
+        box-shadow: none;
+    }
+
+    .widget-washi-tape-content {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}

@@ -1,0 +1,26 @@
+/* Editor-specific styles */
+.elementor-control-section_washi_tape .elementor-panel-heading-title {
+    color: #6d7882;
+}
+
+/* Preview visibility improvements */
+.elementor-editor-active .ljc-washi-tape-wrapper {
+    min-height: 20px;
+    position: relative;
+}
+
+.elementor-editor-active .ljc-tape {
+    pointer-events: none; /* Prevent tape from interfering with editor controls */
+}
+
+/* Make tape more visible in editor */
+.elementor-editor-active .ljc-tape {
+    opacity: 1 !important;
+}
+
+/* Improve visibility of tape positions in editor */
+.elementor-editor-active .ljc-tape-left,
+.elementor-editor-active .ljc-tape-right,
+.elementor-editor-active .ljc-tape-center {
+    transition: all 0.3s ease;
+} 

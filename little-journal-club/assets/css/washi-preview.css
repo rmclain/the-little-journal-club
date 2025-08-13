@@ -1,0 +1,107 @@
+/* Preview-specific styles */
+.elementor-editor-preview .ljc-washi-tape-wrapper {
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+.elementor-editor-preview .ljc-tape {
+    position: absolute !important;
+    z-index: 2 !important;
+    pointer-events: none;
+}
+
+.elementor-editor-preview .ljc-washi-content {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Ensure tape styles are visible in preview */
+.elementor-editor-preview .ljc-tape {
+    opacity: 0.8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Force tape positions in preview */
+.elementor-editor-preview .ljc-tape-left {
+    left: -20px !important;
+    transform-origin: left center !important;
+}
+
+.elementor-editor-preview .ljc-tape-right {
+    right: -20px !important;
+    transform-origin: right center !important;
+}
+
+.elementor-editor-preview .ljc-tape-center {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+/* Ensure tape styles are applied in preview */
+.elementor-editor-preview .ljc-tape-pink {
+    background-color: rgba(255, 182, 193, 0.8) !important;
+}
+
+.elementor-editor-preview .ljc-tape-mint {
+    background-color: rgba(152, 255, 178, 0.8) !important;
+}
+
+.elementor-editor-preview .ljc-tape-lavender {
+    background-color: rgba(230, 190, 255, 0.8) !important;
+}
+
+/* Add other tape style variations with !important */
+
+/* Add to existing preview styles */
+.elementor-editor-preview .ljc-tape {
+    transition: margin-top 0.3s ease !important;
+}
+
+/* Ensure vertical offset works in preview */
+.elementor-editor-preview .ljc-washi-tape-wrapper {
+    overflow: visible !important;
+}
+
+/* Custom image preview styles */
+.elementor-editor-preview .ljc-tape.ljc-tape-custom-image {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: repeat !important;
+}
+
+.elementor-editor-preview .ljc-tape-overlay {
+    pointer-events: none !important;
+}
+
+/* Add to existing preview styles */
+.elementor-editor-preview .ljc-washi-tape-wrapper {
+    transition: all 0.3s ease !important;
+}
+
+.elementor-editor-preview .ljc-tape {
+    transition: all 0.3s ease !important;
+}
+
+/* Ensure tape remains visible during transitions */
+.elementor-editor-preview .ljc-tape {
+    will-change: transform, opacity;
+}
+
+/* Add these styles */
+.elementor-editor-preview .ljc-washi-tape-wrapper[data-tape-enabled="true"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.elementor-editor-preview .ljc-washi-tape-wrapper[data-tape-enabled="true"] .ljc-tape {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.8 !important;
+}
+
+/* Ensure smooth transitions */
+.elementor-editor-preview .ljc-tape {
+    transition: all 0.3s ease !important;
+    will-change: transform, width, height, margin-top !important;
+} 

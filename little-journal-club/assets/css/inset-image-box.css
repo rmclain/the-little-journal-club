@@ -1,0 +1,26 @@
+.inset-image-box {
+    border-style: solid;
+    border-color: #333;
+    transition: transform 0.3s ease;
+    /* Default styles for larger screens */
+    width: 300px;
+    height: 300px;
+}
+
+.inset-image-box:hover {
+    transform: scale(1.05);
+}
+
+.inset-image-box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .inset-image-box {
+        width: 100%;
+        height: auto; /* Adjust height to maintain aspect ratio */
+    }
+} 

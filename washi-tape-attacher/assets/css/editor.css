@@ -1,0 +1,25 @@
+/*
+ * Washi Tape Attacher - Editor Styles
+ */
+
+/* Make the element wrapper position relative so the tape can be positioned within it */
+.elementor-element.wta-element-wrapper,
+.elementor-widget-wrap.wta-element-wrapper,
+.elementor-container.wta-element-wrapper {
+    position: relative !important;
+}
+
+/* Base styles for the tape instance in both preview and frontend */
+.wta-tape-instance,
+.wta-tape-instance-preview {
+    position: absolute;
+    pointer-events: none; /* Prevents the tape from interfering with clicks */
+    line-height: 0; /* Fixes potential spacing issues with SVG */
+}
+
+.wta-tape-instance svg,
+.wta-tape-instance-preview svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}

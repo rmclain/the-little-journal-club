@@ -1,0 +1,549 @@
+/**
+ * Scrapbook Shop for Elementor - Main Styles
+ * Replicates the polaroid/scrapbook aesthetic from the original theme
+ */
+
+/* ========================================
+   CSS Custom Properties (Variables)
+   ======================================== */
+:root {
+  /* Colors - matching original theme */
+  --scrapbook-primary: #2C2C2C;
+  --scrapbook-secondary: #B58C67;
+  --scrapbook-accent: #91A4BA;
+  --scrapbook-text: #484848;
+  --scrapbook-text-light: #7D7D7D;
+  --scrapbook-text-lighter: #5D5D5D;
+  
+  /* Background Colors */
+  --scrapbook-bg-card: #FAF2F1;
+  --scrapbook-bg-card-hover: #F5EDE8;
+  --scrapbook-bg-white: #ffffff;
+  
+  /* Border Colors */
+  --scrapbook-border-primary: #EFE5DA;
+  --scrapbook-border-secondary: #DDCABE;
+  
+  /* Shadows */
+  --scrapbook-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --scrapbook-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.07);
+  --scrapbook-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+  --scrapbook-shadow-focus: 0 0 0 3px rgba(181, 140, 103, 0.1);
+  
+  /* Spacing */
+  --scrapbook-space-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --scrapbook-space-sm: clamp(0.5rem, 2vw, 1rem);
+  --scrapbook-space-md: clamp(1rem, 3vw, 2rem);
+  --scrapbook-space-lg: clamp(2rem, 5vw, 3rem);
+  --scrapbook-space-xl: clamp(3rem, 8vw, 5rem);
+}
+
+/* ========================================
+   ARCHIVE HEADER
+   ======================================== */
+.scrapbook-archive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--scrapbook-space-md);
+  margin-bottom: var(--scrapbook-space-lg);
+  padding: var(--scrapbook-space-md) 0;
+  border-bottom: none;
+}
+
+.scrapbook-archive-title {
+  font-family: 'Meloso', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--scrapbook-primary);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  flex: 1;
+}
+
+.scrapbook-sorting {
+  flex-shrink: 0;
+}
+
+/* Mobile header layout */
+@media (max-width: 767px) {
+  .scrapbook-archive-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--scrapbook-space-sm);
+  }
+  
+  .scrapbook-sorting {
+    align-self: flex-end;
+  }
+}
+
+/* ========================================
+   PRODUCTS GRID
+   ======================================== */
+.scrapbook-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 75px 25px;
+  padding: 0;
+  margin: 25px 0 30px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive grid */
+@media (max-width: 480px) {
+  .scrapbook-products-grid {
+    grid-template-columns: 1fr;
+    gap: 35px 10px;
+    margin: 15px 0 20px 0;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .scrapbook-products-grid {
+    grid-template-columns: 1fr;
+    gap: 45px 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .scrapbook-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 20px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .scrapbook-products-grid {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ========================================
+   PRODUCT CARD
+   ======================================== */
+.scrapbook-product-card {
+  background-color: var(--scrapbook-bg-card);
+  border: 1px solid var(--scrapbook-border-primary);
+  border-radius: 4px;
+  padding: 0 15px 15px 15px;
+  text-align: center;
+  box-shadow: var(--scrapbook-shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+  height: 100%;
+  min-height: 400px;
+}
+
+.scrapbook-product-card-inner,
+.product-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .scrapbook-product-card:hover {
+    transform: translateY(-5px) rotate(-1.5deg);
+    box-shadow: var(--scrapbook-shadow-lg);
+  }
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .scrapbook-product-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* ========================================
+   PRODUCT IMAGE & WASHI TAPE
+   ======================================== */
+.product-image-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+  /* Padding-top is dynamically controlled via Elementor 'Top Clearance' control */
+}
+
+/* Polaroid Frame */
+.polaroid-frame {
+  position: relative;
+  background-color: var(--scrapbook-bg-white);
+  padding: 10px;
+  padding-bottom: 25px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(100% - 20px);
+  z-index: 1;
+}
+
+/* Washi Tape Decoration */
+.washi-tape-decoration {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  width: auto;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+}
+
+.washi-tape-decoration svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Enhanced mobile washi tape sizing */
+@media (max-width: 480px) {
+  .washi-tape-decoration {
+    width: 110px;
+    height: 44px;
+    top: -32px;
+  }
+}
+
+/* Product image inside polaroid */
+.polaroid-frame img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ========================================
+   SALE BADGE
+   ======================================== */
+.scrapbook-product-card .onsale {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #F8C885;
+  color: var(--scrapbook-bg-white);
+  width: 20%;
+  max-width: 60px;
+  min-width: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  z-index: 3;
+  line-height: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   PRODUCT DETAILS
+   ======================================== */
+.product-details {
+  margin-bottom: 15px;
+  flex-grow: 1;
+  padding: 0 5px;
+}
+
+.product-title {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color: var(--scrapbook-text);
+  margin-bottom: 8px;
+  font-weight: 600;
+  line-height: 1.3;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.product-title a {
+  color: var(--scrapbook-text);
+  text-decoration: none;
+  display: block;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.product-title a:hover,
+.product-title a:focus {
+  color: var(--scrapbook-secondary);
+  outline: none;
+}
+
+.product-title a:focus-visible {
+  outline: 2px solid var(--scrapbook-secondary);
+  outline-offset: 2px;
+}
+
+/* Price styling */
+.product-details .price {
+  font-size: 0.95rem;
+  color: #000000;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Struck-through original prices */
+.product-details .price del {
+  color: #666666;
+  font-weight: normal;
+}
+
+/* Star rating */
+.product-details .star-rating {
+  margin: 0 auto 10px auto;
+}
+
+/* ========================================
+   PRODUCT ACTIONS
+   ======================================== */
+.product-actions {
+  margin-top: auto;
+  padding: 0 10px;
+}
+
+.product-actions .button,
+.product-actions .add_to_cart_button {
+  background-color: var(--scrapbook-accent);
+  color: var(--scrapbook-bg-white);
+  text-transform: capitalize;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.9rem;
+  border: 1px solid var(--scrapbook-border-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  box-shadow: var(--scrapbook-shadow-sm);
+  line-height: normal;
+  margin-bottom: 0;
+  min-height: 44px;
+  width: 100%;
+  max-width: 250px;
+  cursor: pointer;
+}
+
+/* Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .product-actions .button:hover,
+  .product-actions .add_to_cart_button:hover {
+    background-color: #DDB0A7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--scrapbook-bg-white);
+  }
+}
+
+/* Focus styles */
+.product-actions .button:focus,
+.product-actions .add_to_cart_button:focus {
+  outline: none;
+  box-shadow: var(--scrapbook-shadow-focus), var(--scrapbook-shadow-sm);
+}
+
+.product-actions .button:focus-visible,
+.product-actions .add_to_cart_button:focus-visible {
+  outline: 2px solid var(--scrapbook-secondary);
+  outline-offset: 2px;
+}
+
+/* Touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  .product-actions .button:active,
+  .product-actions .add_to_cart_button:active {
+    background-color: #DDB0A7;
+    transform: scale(0.98);
+  }
+}
+
+.product-actions .added_to_cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--scrapbook-secondary);
+  text-decoration: none;
+  min-height: 44px;
+  transition: color 0.2s ease;
+}
+
+.product-actions .added_to_cart:hover,
+.product-actions .added_to_cart:focus {
+  color: var(--scrapbook-text);
+}
+
+/* ========================================
+   SORTING DROPDOWN
+   ======================================== */
+.scrapbook-ordering {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.scrapbook-ordering::before {
+  content: "Sort by:";
+  font-family: 'Meloso', sans-serif;
+  font-size: 1.1rem;
+  color: var(--scrapbook-text-light);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+.scrapbook-ordering select {
+  background-color: var(--scrapbook-bg-card);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23B58C67' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  border: 2px solid var(--scrapbook-border-primary);
+  border-radius: 12px;
+  padding: 12px 45px 12px 16px;
+  color: var(--scrapbook-text-lighter);
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(181, 140, 103, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  min-height: 48px;
+  min-width: 180px;
+  transform: rotate(-0.5deg);
+}
+
+.scrapbook-ordering select:hover {
+  border-color: var(--scrapbook-border-secondary);
+  background-color: var(--scrapbook-bg-card-hover);
+  box-shadow: 0 4px 12px rgba(181, 140, 103, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: rotate(0deg) translateY(-1px);
+}
+
+.scrapbook-ordering select:focus {
+  outline: none;
+  border-color: var(--scrapbook-secondary);
+  box-shadow: var(--scrapbook-shadow-focus), 0 4px 12px rgba(181, 140, 103, 0.25);
+  transform: rotate(0deg);
+}
+
+.scrapbook-ordering select:focus-visible {
+  outline: 2px solid var(--scrapbook-secondary);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+.scrapbook-pagination {
+  margin-top: var(--scrapbook-space-lg);
+  text-align: center;
+}
+
+.scrapbook-pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 4px;
+  background-color: var(--scrapbook-bg-card);
+  border: 1px solid var(--scrapbook-border-primary);
+  border-radius: 4px;
+  color: var(--scrapbook-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.scrapbook-pagination .page-numbers:hover {
+  background-color: var(--scrapbook-secondary);
+  color: var(--scrapbook-bg-white);
+  border-color: var(--scrapbook-secondary);
+}
+
+.scrapbook-pagination .page-numbers.current {
+  background-color: var(--scrapbook-accent);
+  color: var(--scrapbook-bg-white);
+  border-color: var(--scrapbook-accent);
+}
+
+/* ========================================
+   NO PRODUCTS MESSAGE
+   ======================================== */
+.scrapbook-no-products {
+  text-align: center;
+  padding: var(--scrapbook-space-xl);
+  color: var(--scrapbook-text-light);
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   RESULT COUNT
+   ======================================== */
+.scrapbook-result-count {
+  color: var(--scrapbook-text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--scrapbook-space-md);
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+.scrapbook-loading {
+  text-align: center;
+  padding: var(--scrapbook-space-lg);
+}
+
+.scrapbook-loading::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--scrapbook-border-primary);
+  border-top-color: var(--scrapbook-secondary);
+  border-radius: 50%;
+  animation: scrapbook-spin 1s linear infinite;
+}
+
+@keyframes scrapbook-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   REDUCED MOTION PREFERENCES
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .scrapbook-product-card,
+  .product-actions .button,
+  .scrapbook-ordering select {
+    transition: none;
+  }
+  
+  .scrapbook-product-card:hover {
+    transform: none;
+  }
+  
+  .scrapbook-loading::after {
+    animation: none;
+  }
+}

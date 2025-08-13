@@ -1,0 +1,44 @@
+/**
+ * Washi Tape Generator Elementor Preview Styles
+ * These styles are only loaded in the Elementor editor
+ */
+
+/* Highlight elements with washi tape in editor */
+.elementor-editor-active .has-washi-tape {
+    outline: 2px dashed #6d28d9;
+    outline-offset: 2px;
+}
+
+/* Add a visual indicator */
+.elementor-editor-active .has-washi-tape::before {
+    content: "🎨 Washi Tape";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background-color: #6d28d9;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Make sure washi tapes are visible and positioned correctly in editor */
+.elementor-editor-active .elementor-washi-tape {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+}
+
+/* Make sure washi tapes don't interfere with editing */
+.elementor-editor-active .elementor-element.elementor-widget > .elementor-washi-tape {
+    pointer-events: none;
+}
+
+/* Show a hint in the panel */
+.elementor-control-section_washi_tape_controls .elementor-panel-heading-title::after {
+    content: "✨";
+    margin-left: 5px;
+    color: #6d28d9;
+}
